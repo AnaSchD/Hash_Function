@@ -1,19 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class ProductCollection {
 
-    List<Product> products = new ArrayList<>();
+    Set<Product> products = new HashSet<>();
 
-    public void addProductsToTheBucket(Product product) {
-        products.add(product);
-    }
+    public void addProduct(Product product) {
 
-    public void removeProductsFromTheBucket(Product product) {
-        if (!products.equals(product)) {
-
+        if (products.contains(product)) {
+            throw new RuntimeException("Этот продукт уже есть в списке продуктов ");
+        } else {
+            products.add(product);
         }
     }
 
+    public void remove(Product product) {
+        products.remove(product);
+    }
 
+
+//    public void showProduct() {
+//        for (int i = 0; i < products.size(); i++) {
+//            System.out.println(products.get(i));
+//        }
+//    }
+
+    public ProductCollection() {
+        this.products = products;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ProductCollection{" +
+                "products=" + products +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductCollection that = (ProductCollection) o;
+        return Objects.equals(products, that.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(products);
+    }
 }

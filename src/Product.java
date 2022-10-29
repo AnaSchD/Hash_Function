@@ -6,21 +6,23 @@ public class Product {
     private double weight;
     private int quantity;
 
+
+
     public Product(String name, double weight, int quantity) {
-        if (name != null) {
+        if (name != null && !name.isEmpty()) {
             this.name = name;
         } else {
-            System.out.println("Введи название продукта");
+            throw new IllegalArgumentException( "Введи название продукта");
         }
         if (weight > 0) {
             this.weight = weight;
         } else {
-            System.out.println("Напиши вес продукта");
+            throw new IllegalArgumentException("Напиши вес продукта");
         }
         if (quantity > 0) {
             this.quantity = quantity;
         } else {
-            System.out.println("Укажи кол-во продуктов");
+            throw new IllegalArgumentException("Укажи кол-во продуктов");
         }
     }
 
@@ -49,7 +51,7 @@ public class Product {
     public String toString() {
         return "В списке продуктов есть: " + getName() +
                 " весом " + getWeight() +
-                " и количеством" + getQuantity();
+                " и количеством " + getQuantity() + "\n";
     }
 
     @Override
