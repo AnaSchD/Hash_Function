@@ -21,6 +21,8 @@ public class ProductCollection {
 
 
     public void printProductCollection() {
+        System.out.println("Все продукты: ");
+
         for (Product prod : products) {
             System.out.println(prod.getName() + " стоимостью " + prod.getPrice() + " руб.," + " и весом " + prod.getWeight() + " кг.");
         }

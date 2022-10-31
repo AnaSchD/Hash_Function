@@ -56,4 +56,13 @@ public class RecipeBook {
     public int hashCode() {
         return Objects.hash(products, costOfProducts, nameOfRecipe);
     }
+
+    @Override
+    public String toString() {
+        return "RecipeBook{" +
+                "products=" + products +
+                ", costOfProducts=" + costOfProducts +
+                ", nameOfRecipe='" + nameOfRecipe + '\'' +
+                '}';
+    }
 }
