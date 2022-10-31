@@ -24,9 +24,9 @@ public class RecipeCollection {
 
     public void printAllRecipeCollection() {
         System.out.println("Все рецепты: ");
-
-
-
+        for (Recipe recipe : recipeCollections) {
+            System.out.println(recipe.getNameOfRecipe() + " ");
+        }
     }
 
     @Override
