@@ -20,11 +20,11 @@ public class ProductCollection {
     }
 
 
-//    public void showProduct() {
-//        for (int i = 0; i < products.size(); i++) {
-//            System.out.println(products.get(i));
-//        }
-//    }
+    public void printProductCollection() {
+        for (Product prod : products) {
+            System.out.println(prod.getName() + " стоимостью " + prod.getPrice() + " руб.," + " и весом " + prod.getWeight() + " кг.");
+        }
+    }
 
     public ProductCollection() {
         this.products = products;
