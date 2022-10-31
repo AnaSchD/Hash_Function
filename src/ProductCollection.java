@@ -15,21 +15,19 @@ public class ProductCollection {
         }
     }
 
-    public void remove(Product product) {
-        products.remove(product);
+    public void printProductCollection() {
+        for (Product prod : products) {
+            System.out.println(prod.getName() + " стоимостью " + prod.getPrice() + " руб.," + " и весом " + prod.getWeight() + " кг.");
+        }
     }
-
-
-//    public void showProduct() {
-//        for (int i = 0; i < products.size(); i++) {
-//            System.out.println(products.get(i));
-//        }
-//    }
 
     public ProductCollection() {
         this.products = products;
     }
 
+    public void remove(Product product) {
+        products.remove(product);
+    }
 
     @Override
     public String toString() {

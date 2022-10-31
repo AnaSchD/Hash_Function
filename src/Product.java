@@ -4,11 +4,11 @@ public class Product {
 
     private String name;
     private double weight;
-    private int quantity;
+    private double price;
 
 
 
-    public Product(String name, double weight, int quantity) {
+    public Product(String name, double weight, double price) {
         if (name != null && !name.isEmpty()) {
             this.name = name;
         } else {
@@ -19,10 +19,10 @@ public class Product {
         } else {
             throw new IllegalArgumentException("Напиши вес продукта");
         }
-        if (quantity > 0) {
-            this.quantity = quantity;
+        if (price > 0) {
+            this.price = price;
         } else {
-            throw new IllegalArgumentException("Укажи кол-во продуктов");
+            throw new IllegalArgumentException("Укажи стоимость продукта");
         }
     }
 
@@ -39,19 +39,19 @@ public class Product {
         this.weight = weight;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "В списке продуктов есть: " + getName() +
                 " весом " + getWeight() +
-                " и количеством " + getQuantity() + "\n";
+                " и стоимостью " + getPrice() + "\n";
     }
 
     @Override
@@ -59,11 +59,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.weight, weight) == 0 && quantity == product.quantity && Objects.equals(name, product.name);
+        return Double.compare(product.weight, weight) == 0 && price == product.price && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, quantity);
+        return Objects.hash(name, weight, price);
     }
 }
