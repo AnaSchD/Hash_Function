@@ -2,34 +2,30 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class RecipeBook {
+public class Recipe extends RecipeCollection {
 
-    private Set <Product> products = new HashSet<Product>();
+    private Set <Product> products = new HashSet<>();
     private float costOfProducts;
     private String nameOfRecipe;
 
-    public RecipeBook(Set<Product> products, float costOfProducts, String nameOfRecipe) {
+    public Recipe(Set<Product> products, String nameOfRecipe) {
         if (products != null && !products.isEmpty()) {
             this.products = products;
         } else {
             throw new RuntimeException("Список продуктов пустой");
         }
-
-        this.costOfProducts = costOfProducts;
-
-        if (!nameOfRecipe.contains(nameOfRecipe)) {
+        if (nameOfRecipe != null && !nameOfRecipe.isEmpty()) {
             this.nameOfRecipe = nameOfRecipe;
         } else {
-            throw new RuntimeException("Рецепт с таким названием уже существует");
+            this.nameOfRecipe = "Нет названия";
         }
     }
 
-    public void addProductInRecipe(Product product) {
-        if (products.contains(product)) {
-            throw new RuntimeException("Продукт уже добавлен в рецепт!");
-        } else {
-            products.add(product);
-        }
+    public float calculateSumOfProducts(Recipe recipe) {
+        int sum = 0;
+        for (Product product: recipe.getProducts()) {
+            sum += product.getPrice();
+        } return sum;
     }
 
     public Set<Product> getProducts() {
@@ -48,8 +44,9 @@ public class RecipeBook {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RecipeBook recipe = (RecipeBook) o;
-        return Float.compare(recipe.costOfProducts, costOfProducts) == 0 && Objects.equals(products, recipe.products);
+        Recipe recipe = (Recipe) o;
+        return Float.compare(recipe.costOfProducts, costOfProducts) == 0 && Objects.equals(products, recipe.products)
+                && Objects.equals(nameOfRecipe, recipe.nameOfRecipe);
     }
 
     @Override

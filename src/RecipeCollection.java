@@ -4,10 +4,28 @@ import java.util.Set;
 
 public class RecipeCollection {
 
-    Set<RecipeCollection> recipeCollections = new HashSet<>();
+    public static Set<Recipe> recipeCollections = new HashSet<>();
 
-    public void printRecipeCollection() {
+    public void addRecipeInRecipeCollection(Recipe recipe) {
+
+        if (recipeCollections != null && !recipeCollections.isEmpty()) {
+            for (Recipe currentRecipe : recipeCollections) {
+                if (currentRecipe.getNameOfRecipe().equals(recipe.getNameOfRecipe())) {
+                    throw new IllegalArgumentException("Рецепт с таким названием уже существует!!");
+                } else {
+                    recipeCollections.add(recipe);
+                }
+            }
+        } else {
+            recipeCollections.add(recipe);
+        }
+
+    }
+
+    public void printAllRecipeCollection() {
         System.out.println("Все рецепты: ");
+
+
 
     }
 

@@ -49,8 +49,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "В списке продуктов есть: " + getName() +
-                " весом " + getWeight() +
+        return "В списке продуктов есть: " + getName() + " весом " + getWeight() +
                 " и стоимостью " + getPrice() + "\n";
     }
 
