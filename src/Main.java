@@ -44,7 +44,7 @@ public class Main {
 
     }
 
-    //дз 2
+    //дз 2 зад 2
 
     public static Set<Integer> randomNumbers() {
         Set<Integer> integers = new HashSet<>();
