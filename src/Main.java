@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +43,22 @@ public class Main {
 
         System.out.println(recipeCollection);
 
+
+        Passport passport1 = new Passport("Inna", "Ivanova", "Vasilyeva", "09.10.1996", 272);
+        Passport passport2 = new Passport("Aleksey1", "Alekseev", "Alekseev", "05.12.1978", 67748372);
+        Passport passport3 = new Passport("Aleksey2", "Alekseev", "Alekseev", "05.12.1978", 6783729);
+        Passport passport4 = new Passport("Aleksey3", "Alekseev", "Alekseev", "05.12.1978", 678372);
+
+        Passport.addPassportInCollection(passport1);
+        Passport.addPassportInCollection(passport2);
+        Passport.addPassportInCollection(passport3);
+        Passport.addPassportInCollection(passport4);
+
+        System.out.println(Arrays.toString(Passport.passportList.toArray()));
+        System.out.println(Passport.searchPassport(67748372));
+
+
+        System.out.println(randomNumbers());
     }
 
     //дз 2 зад 2
@@ -50,12 +67,23 @@ public class Main {
         Set<Integer> integers = new HashSet<>();
         for (int i = 0; i < 20; i++) {
             double random = Math.random() * 1000;
-            integers.add((int) random);
+            integers.add((int)random);
         }
-
-        integers.removeIf(integer -> integer % 2 == 0);
+        System.out.println(integers);
+        for (Integer count : integers) {               //?????????????????????????????? я сделала по изученным темам
+            if (count % 2 != 0) {
+                integers.remove(count);
+            }
+        }
         return integers;
     }
+
+    // дз 3 зад 4
+    // HashSet, потому что изначально идет сравнение по хеш-коду
+    //
+
+
+
 
 
 }
