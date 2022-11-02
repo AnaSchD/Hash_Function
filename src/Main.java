@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Main {
@@ -18,44 +20,26 @@ public class Main {
         Product carrot1 = new Product("морковь", 0.2, 19);
 
 
-        Set<Product> recipe = new HashSet<>();
-        recipe.add(pork);
-        recipe.add(potato);
-        recipe.add(onion);
-        recipe.add(cabbage);
-        recipe.add(carrot);
-
-        Set<Product> recipe01 = new HashSet<>();
-        recipe01.add(pork);
-        recipe01.add(onion);
-        recipe01.add(carrot1);
-
-        Recipe recipe1 = new Recipe(recipe, "Shchi");
-        Recipe recipe2 = new Recipe(recipe01, "Shchi8");
-        // Recipe recipe2 = new Recipe(recipe01, "Shchi");
-
-        RecipeCollection recipeCollection = new RecipeCollection();
 
 
-        recipeCollection.addRecipeInRecipeCollection(recipe1);
-        recipeCollection.addRecipeInRecipeCollection(recipe2);
+        Recipe recipe1 = new Recipe("salat");
+        recipe1.addProductsInRecipe(potato, 12);
+        recipe1.addProductsInRecipe(carrot, 10);
+        recipe1.addProductsInRecipe(onion, 10);
+        System.out.println(recipe1.getCostOfProducts());
 
-        System.out.println(recipeCollection);
+        //дз 2 зад 2
+
+//    public static Set<Integer> randomNumbers() {
+//        Set<Integer> integers = new HashSet<>();
+//        for (int i = 0; i < 20; i++) {
+//            double random = Math.random() * 1000;
+//            integers.add((int) random);
+//        }
+//
+//        integers.removeIf(integer -> integer % 2 == 0);
+//        return integers;
+//    }
 
     }
-
-    //дз 2 зад 2
-
-    public static Set<Integer> randomNumbers() {
-        Set<Integer> integers = new HashSet<>();
-        for (int i = 0; i < 20; i++) {
-            double random = Math.random() * 1000;
-            integers.add((int) random);
-        }
-
-        integers.removeIf(integer -> integer % 2 == 0);
-        return integers;
-    }
-
-
 }

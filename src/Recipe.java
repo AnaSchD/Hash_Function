@@ -1,19 +1,18 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-public class Recipe extends RecipeCollection {
+public class Recipe {
 
-    private Set <Product> products = new HashSet<>();
+    private Map<Product, Integer> products = new HashMap<>();
     private float costOfProducts;
     private String nameOfRecipe;
 
-    public Recipe(Set<Product> products, String nameOfRecipe) {
-        if (products != null && !products.isEmpty()) {
-            this.products = products;
-        } else {
-            throw new RuntimeException("Список продуктов пустой");
-        }
+    public Recipe(String nameOfRecipe) {
+
+//        if (products != null) {
+//            this.products = products;
+//        } else {
+//            throw new RuntimeException("Список продуктов пустой");
+//        }
         if (nameOfRecipe != null && !nameOfRecipe.isEmpty()) {
             this.nameOfRecipe = nameOfRecipe;
         } else {
@@ -21,14 +20,23 @@ public class Recipe extends RecipeCollection {
         }
     }
 
-    public float calculateSumOfProducts(Recipe recipe) {
+    public void addProductsInRecipe(Product key, Integer value) {
+        if (value == null || value <= 0) {
+            value = 1;
+            this.costOfProducts += value * key.getPrice();
+            products.put(key, value);
+        }else{
+        this.costOfProducts += value * key.getPrice();
+        products.put(key, value);
+    }}
+
+    public static void calculateSumOfProducts(Recipe recipe) {
         int sum = 0;
-        for (Product product: recipe.getProducts()) {
-            sum += product.getPrice();
-        } return sum;
+        System.out.println(recipe.getProducts().values());
+
     }
 
-    public Set<Product> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 
@@ -63,3 +71,5 @@ public class Recipe extends RecipeCollection {
                 '}';
     }
 }
+
+
