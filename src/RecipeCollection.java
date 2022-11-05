@@ -10,7 +10,7 @@ public class RecipeCollection {
 
         if (recipeCollections != null && !recipeCollections.isEmpty()) {
             for (Recipe currentRecipe : recipeCollections) {
-                if (currentRecipe.getNameOfRecipe().equals(recipe.getNameOfRecipe())) {
+                if (currentRecipe.equals(recipe)) {
                     throw new IllegalArgumentException("Рецепт с таким названием уже существует!!");
                 } else {
                     recipeCollections.add(recipe);

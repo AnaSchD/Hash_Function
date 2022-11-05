@@ -41,36 +41,38 @@ public class Main {
         recipeCollection.addRecipeInRecipeCollection(recipe1);
         recipeCollection.addRecipeInRecipeCollection(recipe2);
 
-        System.out.println(recipeCollection);
+       // System.out.println(recipeCollection);
 
 
         Passport passport1 = new Passport("Inna", "Ivanova", "Vasilyeva", "09.10.1996", 272);
-        Passport passport2 = new Passport("Aleksey1", "Alekseev", "Alekseev", "05.12.1978", 67748372);
-        Passport passport3 = new Passport("Aleksey2", "Alekseev", "Alekseev", "05.12.1978", 6783729);
+        Passport passport2 = new Passport("Aleksey1", "Alekseev", "Alekseev", "05.12.1978", 677483);
+        Passport passport3 = new Passport("Aleksey2", "Alekseev2", "Alekseev2", "05.12.1979", 67837);
         Passport passport4 = new Passport("Aleksey3", "Alekseev", "Alekseev", "05.12.1978", 678372);
 
-        Passport.addPassportInCollection(passport1);
-        Passport.addPassportInCollection(passport2);
-        Passport.addPassportInCollection(passport3);
-        Passport.addPassportInCollection(passport4);
+        PassportCollection passportCollection = new PassportCollection();
 
-        System.out.println(Arrays.toString(Passport.passportList.toArray()));
-        System.out.println(Passport.searchPassport(67748372));
+        passportCollection.addPassportInCollection(passport1);
+        passportCollection.addPassportInCollection(passport2);
+        passportCollection.addPassportInCollection(passport3);
+        passportCollection.addPassportInCollection(passport4);
+
+       // System.out.println(passportCollection);
 
 
-        System.out.println(randomNumbers());
+
+      System.out.println(randomNumbers());
     }
 
     //дз 2 зад 2
 
     public static Set<Integer> randomNumbers() {
         Set<Integer> integers = new HashSet<>();
-        for (int i = 0; i < 20; i++) {
+        while (integers.size() != 20) {
             double random = Math.random() * 1000;
             integers.add((int)random);
         }
         System.out.println(integers);
-        for (Integer count : integers) {               //?????????????????????????????? я сделала по изученным темам
+        for (Integer count : integers) {
             if (count % 2 != 0) {
                 integers.remove(count);
             }

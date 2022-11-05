@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class ProductCollection {
 
-    Set<Product> products = new HashSet<>();
+    private final Set<Product> products = new HashSet<>();
 
     public void addProduct(Product product) {
 
@@ -28,9 +28,6 @@ public class ProductCollection {
         }
     }
 
-    public ProductCollection() {
-        this.products = products;
-    }
 
 
     @Override

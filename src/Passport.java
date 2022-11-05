@@ -9,7 +9,6 @@ public class Passport {
     private String patronymic;
     private String dateOfBirth;
     private int numberPassport;
-    public static List<Passport> passportList = new ArrayList<Passport>();
 
     public Passport(String name, String surname, String patronymic, String dateOfBirth, int numberPassport) {
         if (name == null && name.isEmpty() && name.isBlank()) {
@@ -38,29 +37,6 @@ public class Passport {
         } else {
             this.numberPassport = numberPassport;
         }
-    }
-
-    public static void addPassportInCollection(Passport passport) {
-        if (!passportList.isEmpty()) {
-            for (int i = 0; i < passportList.size(); i++) {
-                if (passportList.get(i).getNumberPassport() == passport.getNumberPassport()) {
-                    throw new IllegalArgumentException("Паспорт с таким номером уже существует!");
-                }
-            }
-            passportList.add(passport);
-        } else {
-            passportList.add(passport);
-        }
-    }
-
-    public static Passport searchPassport(int numberPassport) {
-
-        for (int i = 0; i < passportList.size(); i++) {
-            if (passportList.get(i).getNumberPassport() == numberPassport) {
-                return passportList.get(i);
-            }
-        }
-        return null;
     }
 
     public String getName() {
@@ -95,13 +71,9 @@ public class Passport {
         return numberPassport;
     }
 
-    public List<Passport> getPassportList() {
-        return passportList;
-    }
-
     @Override
     public String toString() {
-        return "Passport № " + numberPassport + " " + name + " " + surname + " " + patronymic + " " + dateOfBirth;
+        return "Passport № " + numberPassport + " " + name + " " + surname + " " + patronymic + " " + dateOfBirth  + "\n" ;
     }
 
     @Override
@@ -109,13 +81,11 @@ public class Passport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return numberPassport == passport.numberPassport && Objects.equals(name, passport.name) &&
-                Objects.equals(surname, passport.surname) && Objects.equals(patronymic, passport.patronymic)
-                && Objects.equals(dateOfBirth, passport.dateOfBirth);
+        return numberPassport == passport.numberPassport;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, patronymic, dateOfBirth, numberPassport);
+        return Objects.hash(numberPassport);
     }
 }

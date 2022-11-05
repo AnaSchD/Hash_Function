@@ -19,14 +19,11 @@ public class Recipe extends RecipeCollection {
         } else {
             this.nameOfRecipe = "Нет названия";
         }
+        for (Product product: products) {
+            costOfProducts += product.getPrice();
+        }
     }
 
-    public float calculateSumOfProducts(Recipe recipe) {
-        int sum = 0;
-        for (Product product: recipe.getProducts()) {
-            sum += product.getPrice();
-        } return sum;
-    }
 
     public Set<Product> getProducts() {
         return products;
@@ -44,14 +41,14 @@ public class Recipe extends RecipeCollection {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Recipe recipe = (Recipe) o;
-        return Float.compare(recipe.costOfProducts, costOfProducts) == 0 && Objects.equals(products, recipe.products)
-                && Objects.equals(nameOfRecipe, recipe.nameOfRecipe);
+        return nameOfRecipe.equals(recipe.nameOfRecipe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(products, costOfProducts, nameOfRecipe);
+        return Objects.hash(nameOfRecipe);
     }
 
     @Override

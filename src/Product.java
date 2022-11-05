@@ -58,11 +58,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.weight, weight) == 0 && price == product.price && Objects.equals(name, product.name);
+        return name.equals(product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, weight, price);
+        return Objects.hash(name);
     }
 }
